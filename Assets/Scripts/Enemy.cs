@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     Vector3 dir;
     public float speed = 5; //이동 속도
+    public GameObject explosionFactory; //폭발 효과 공장
 
     void Start()
     {
@@ -33,6 +34,9 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        GameObject explosion = Instantiate(explosionFactory); //공장에서 효과 하나 생성
+        explosion.transform.position = transform.position; //폭발 효과를 위치시킨다
+
         Destroy(other.gameObject); //나와 부딪힌 객체 파괴
         Destroy(gameObject); //이 객체 파괴
     }
