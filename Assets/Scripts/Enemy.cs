@@ -39,5 +39,11 @@ public class Enemy : MonoBehaviour
 
         Destroy(other.gameObject); //나와 부딪힌 객체 파괴
         Destroy(gameObject); //이 객체 파괴
+
+        //현재 점수 표시
+        GameObject smObject = GameObject.Find("ScoreManager"); //씬에서 ScoreManager 객체를 찾아온다
+        ScoreManager sm = smObject.GetComponent<ScoreManager>(); //ScoreManager 게임 오브젝트에서 얻어온다.
+        
+        sm.SetScore(sm.GetScore() + 1);
     }
 }
